@@ -1,12 +1,12 @@
-SET ANSI_NULLS ON
+п»їSET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
 -- =============================================
--- Author:		Маликов В.А.
+-- Author:		РњР°Р»РёРєРѕРІ Р’.Рђ.
 -- Create date: 2016-12-04
--- Description:	Процедура для отчёта "Детализация трафика"
--- exec a.Traffic @from_date = '2016-01-01', @trim_date = '2016-02-01', @name = 'Все'
+-- Description:	РџСЂРѕС†РµРґСѓСЂР° РґР»СЏ РѕС‚С‡С‘С‚Р° "Р”РµС‚Р°Р»РёР·Р°С†РёСЏ С‚СЂР°С„РёРєР°"
+-- exec a.Traffic @from_date = '2016-01-01', @trim_date = '2016-02-01', @name = 'Р’СЃРµ'
 -- =============================================
 CREATE PROCEDURE a.Traffic
 	@from_date date, 
@@ -15,15 +15,15 @@ CREATE PROCEDURE a.Traffic
 AS
 BEGIN
 	/*
-		По идее, правильнее ограничить допустимые даты в ReportBuilder`e, дабы не пугать пользователя эксепшеном.
+		РџРѕ РёРґРµРµ, РїСЂР°РІРёР»СЊРЅРµРµ РѕРіСЂР°РЅРёС‡РёС‚СЊ РґРѕРїСѓСЃС‚РёРјС‹Рµ РґР°С‚С‹ РІ ReportBuilder`e, РґР°Р±С‹ РЅРµ РїСѓРіР°С‚СЊ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ СЌРєСЃРµРїС€РµРЅРѕРј.
 	*/
 	if DATEDIFF(month, @from_date, @trim_date) > 1
 	begin
-		raiserror ('Период не может превышать один месяц!', 16, 1)
+		raiserror ('РџРµСЂРёРѕРґ РЅРµ РјРѕР¶РµС‚ РїСЂРµРІС‹С€Р°С‚СЊ РѕРґРёРЅ РјРµСЃСЏС†!', 16, 1)
 		return
 	end
 	
-	select @name = case @name when  'Все' then null else @name end
+	select @name = case @name when  'Р’СЃРµ' then null else @name end
 	create table #t1
 	(
 		DepartureDateTime varchar (128),
@@ -82,7 +82,7 @@ BEGIN
 	if @name is null
 	begin
 		select 
-			c.name [AirCompanys] -- список смапить в отедльную таблицу в репортсе.
+			c.name [AirCompanys] -- СЃРїРёСЃРѕРє СЃРјР°РїРёС‚СЊ РІ РѕС‚РµРґР»СЊРЅСѓСЋ С‚Р°Р±Р»РёС†Сѓ РІ СЂРµРїРѕСЂС‚СЃРµ.
 		from a.Companies c
 		where exists
 		(

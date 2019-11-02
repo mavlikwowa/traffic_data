@@ -1,11 +1,11 @@
-SET ANSI_NULLS ON
+ï»¿SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
 -- =============================================
--- Author:	Ìàëèêîâ Â.À.
+-- Author:	ĞœĞ°Ğ»Ğ¸ĞºĞ¾Ğ² Ğ’.Ğ.
 -- Create date: 2016-12-04
--- Description:	Ïğîöåäóğà äëÿ îò÷¸òà "Ñâîäíûé îò÷åò ïî ïàññàæèğîïîòîêó"
+-- Description:	ĞŸÑ€Ğ¾Ñ†ĞµĞ´ÑƒÑ€Ğ° Ğ´Ğ»Ñ Ğ¾Ñ‚Ñ‡Ñ‘Ñ‚Ğ° "Ğ¡Ğ²Ğ¾Ğ´Ğ½Ñ‹Ğ¹ Ğ¾Ñ‚Ñ‡ĞµÑ‚ Ğ¿Ğ¾ Ğ¿Ğ°ÑÑĞ°Ğ¶Ğ¸Ñ€Ğ¾Ğ¿Ğ¾Ñ‚Ğ¾ĞºÑƒ"
 
 -- =============================================
 CREATE PROCEDURE a.Passengers
@@ -23,21 +23,21 @@ BEGIN
 	insert into #t1
 	select
 		case
-			when DATENAME(month, DepartureDateTime) = 'January' then 'ßíâàğü'
-			when DATENAME(month, DepartureDateTime) = 'February' then 'Ôåâğàëü'
-			when DATENAME(month, DepartureDateTime) = 'March' then 'Ìàğò'
-			when DATENAME(month, DepartureDateTime) = 'April' then 'Àïğåëü'
-			when DATENAME(month, DepartureDateTime) = 'May' then 'Ìàé'
-			when DATENAME(month, DepartureDateTime) = 'June' then 'Èşíü'
-			when DATENAME(month, DepartureDateTime) = 'July' then 'Èşëü'
-			when DATENAME(month, DepartureDateTime) = 'August' then 'Àâãóñò'
-			when DATENAME(month, DepartureDateTime) = 'September' then 'Ñåíòÿáğü'
-			when DATENAME(month, DepartureDateTime) = 'October' then 'Îêòÿáğü'
-			when DATENAME(month, DepartureDateTime) = 'November' then 'Íîÿáğü'
-			when DATENAME(month, DepartureDateTime) = 'December' then 'Äåêàáğü'
+			when DATENAME(month, DepartureDateTime) = 'January' then 'Ğ¯Ğ½Ğ²Ğ°Ñ€ÑŒ'
+			when DATENAME(month, DepartureDateTime) = 'February' then 'Ğ¤ĞµĞ²Ñ€Ğ°Ğ»ÑŒ'
+			when DATENAME(month, DepartureDateTime) = 'March' then 'ĞœĞ°Ñ€Ñ‚'
+			when DATENAME(month, DepartureDateTime) = 'April' then 'ĞĞ¿Ñ€ĞµĞ»ÑŒ'
+			when DATENAME(month, DepartureDateTime) = 'May' then 'ĞœĞ°Ğ¹'
+			when DATENAME(month, DepartureDateTime) = 'June' then 'Ğ˜ÑĞ½ÑŒ'
+			when DATENAME(month, DepartureDateTime) = 'July' then 'Ğ˜ÑĞ»ÑŒ'
+			when DATENAME(month, DepartureDateTime) = 'August' then 'ĞĞ²Ğ³ÑƒÑÑ‚'
+			when DATENAME(month, DepartureDateTime) = 'September' then 'Ğ¡ĞµĞ½Ñ‚ÑĞ±Ñ€ÑŒ'
+			when DATENAME(month, DepartureDateTime) = 'October' then 'ĞĞºÑ‚ÑĞ±Ñ€ÑŒ'
+			when DATENAME(month, DepartureDateTime) = 'November' then 'ĞĞ¾ÑĞ±Ñ€ÑŒ'
+			when DATENAME(month, DepartureDateTime) = 'December' then 'Ğ”ĞµĞºĞ°Ğ±Ñ€ÑŒ'
 		end dt,
 		AirCompanyId,
-		-- òóò isnull íå ïîìîãàåò. Ïğèä¸òñÿ â ğåïîğòñå äîäåëàòü ëîãèêó. Íå äîáàâëÿòü æå åùå îäíó òàáëèöó...
+		-- Ñ‚ÑƒÑ‚ isnull Ğ½Ğµ Ğ¿Ğ¾Ğ¼Ğ¾Ğ³Ğ°ĞµÑ‚. ĞŸÑ€Ğ¸Ğ´Ñ‘Ñ‚ÑÑ Ğ² Ñ€ĞµĞ¿Ğ¾Ñ€Ñ‚ÑĞµ Ğ´Ğ¾Ğ´ĞµĞ»Ğ°Ñ‚ÑŒ Ğ»Ğ¾Ğ³Ğ¸ĞºÑƒ. ĞĞµ Ğ´Ğ¾Ğ±Ğ°Ğ²Ğ»ÑÑ‚ÑŒ Ğ¶Ğµ ĞµÑ‰Ğµ Ğ¾Ğ´Ğ½Ñƒ Ñ‚Ğ°Ğ±Ğ»Ğ¸Ñ†Ñƒ...
 		isnull(Passengers, 0) 
 	from a.Flights
 	where DepartureDateTime >= @from_date and DepartureDateTime < @trim_date
@@ -46,18 +46,18 @@ BEGIN
 
 	select
 		AirCompanyId,
-		[ßíâàğü],
-		[Ôåâğàëü],
-		[Ìàğò],
-		[Àïğåëü],
-		[Ìàé],
-		[Èşíü],
-		[Èşëü],
-		[Àâãóñò],
-		[Ñåíòÿáğü],
-		[Îêòÿáğü],
-		[Íîÿáğü],
-		[Äåêàáğü]
+		[Ğ¯Ğ½Ğ²Ğ°Ñ€ÑŒ],
+		[Ğ¤ĞµĞ²Ñ€Ğ°Ğ»ÑŒ],
+		[ĞœĞ°Ñ€Ñ‚],
+		[ĞĞ¿Ñ€ĞµĞ»ÑŒ],
+		[ĞœĞ°Ğ¹],
+		[Ğ˜ÑĞ½ÑŒ],
+		[Ğ˜ÑĞ»ÑŒ],
+		[ĞĞ²Ğ³ÑƒÑÑ‚],
+		[Ğ¡ĞµĞ½Ñ‚ÑĞ±Ñ€ÑŒ],
+		[ĞĞºÑ‚ÑĞ±Ñ€ÑŒ],
+		[ĞĞ¾ÑĞ±Ñ€ÑŒ],
+		[Ğ”ĞµĞºĞ°Ğ±Ñ€ÑŒ]
 	from
 	(
 	  select 
@@ -71,18 +71,18 @@ BEGIN
 	sum (Passengers) 
 	FOR m IN 
 	(
-		[ßíâàğü],
-		[Ôåâğàëü],
-		[Ìàğò],
-		[Àïğåëü],
-		[Ìàé],
-		[Èşíü],
-		[Èşëü],
-		[Àâãóñò],
-		[Ñåíòÿáğü],
-		[Îêòÿáğü],
-		[Íîÿáğü],
-		[Äåêàáğü]
+		[Ğ¯Ğ½Ğ²Ğ°Ñ€ÑŒ],
+		[Ğ¤ĞµĞ²Ñ€Ğ°Ğ»ÑŒ],
+		[ĞœĞ°Ñ€Ñ‚],
+		[ĞĞ¿Ñ€ĞµĞ»ÑŒ],
+		[ĞœĞ°Ğ¹],
+		[Ğ˜ÑĞ½ÑŒ],
+		[Ğ˜ÑĞ»ÑŒ],
+		[ĞĞ²Ğ³ÑƒÑÑ‚],
+		[Ğ¡ĞµĞ½Ñ‚ÑĞ±Ñ€ÑŒ],
+		[ĞĞºÑ‚ÑĞ±Ñ€ÑŒ],
+		[ĞĞ¾ÑĞ±Ñ€ÑŒ],
+		[Ğ”ĞµĞºĞ°Ğ±Ñ€ÑŒ]
 	)
 	) piv;
 	

@@ -1,4 +1,4 @@
-create table a.Geography 
+п»їcreate table a.Geography 
 (
 	AirportId int primary key identity(1,1) not null,
 	Name varchar (255) not null,
@@ -35,7 +35,7 @@ create table a.Flights
 
 ---------------------------------------------------------------------------------------------------------
 
-insert into a.Companies --  Ваша авиакомпания представлена под идентификатором 0.
+insert into a.Companies --  Р’Р°С€Р° Р°РІРёР°РєРѕРјРїР°РЅРёСЏ РїСЂРµРґСЃС‚Р°РІР»РµРЅР° РїРѕРґ РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂРѕРј 0.
 (
 	Name
 )
@@ -47,7 +47,7 @@ values
 select * from a.Companies
 ---------------------------------------------------------------------------------------------------------
 /*
-	В задание это не входит, но для написания запросов, немного заполним таблицы данными
+	Р’ Р·Р°РґР°РЅРёРµ СЌС‚Рѕ РЅРµ РІС…РѕРґРёС‚, РЅРѕ РґР»СЏ РЅР°РїРёСЃР°РЅРёСЏ Р·Р°РїСЂРѕСЃРѕРІ, РЅРµРјРЅРѕРіРѕ Р·Р°РїРѕР»РЅРёРј С‚Р°Р±Р»РёС†С‹ РґР°РЅРЅС‹РјРё
 */
 
 create table #t1
@@ -61,29 +61,29 @@ insert into #t1
 )
 values
 (
-	'Европа'
+	'Р•РІСЂРѕРїР°'
 ),
 (	
-	'Азия'
+	'РђР·РёСЏ'
 ),
 (	
-	'Австралия'
+	'РђРІСЃС‚СЂР°Р»РёСЏ'
 ),
 (	
-	'Северная Америка'
+	'РЎРµРІРµСЂРЅР°СЏ РђРјРµСЂРёРєР°'
 ),
 (	
-	'Южная Америка'
+	'Р®Р¶РЅР°СЏ РђРјРµСЂРёРєР°'
 ),
--- а вдруг
+-- Р° РІРґСЂСѓРі
 (	
-	'Антарктида'
+	'РђРЅС‚Р°СЂРєС‚РёРґР°'
 ) 
 
 
 
 declare 
-@a int = 100 -- сколько строк добавить
+@a int = 100 -- СЃРєРѕР»СЊРєРѕ СЃС‚СЂРѕРє РґРѕР±Р°РІРёС‚СЊ
 
 while @a > 0
 
@@ -99,10 +99,10 @@ begin
 	)
 	values
 	(
-		'Аэропорт'+ ' ' + CHAR ((ABS(Checksum(NewID()) % 15) + 1) + 64) + CHAR ((ABS(Checksum(NewID()) % 15) + 1) + 64)+ CHAR ((ABS(Checksum(NewID()) % 15) + 1)+ 64),
-		'Город'+ ' ' + CHAR ((ABS(Checksum(NewID()) % 15) + 1) + 64) + CHAR ((ABS(Checksum(NewID()) % 15) + 1) + 64)+ CHAR ((ABS(Checksum(NewID()) % 15) + 1)+ 64),
-		'Регион'+ ' ' + CHAR ((ABS(Checksum(NewID()) % 15) + 1) + 64) + CHAR ((ABS(Checksum(NewID()) % 15) + 1) + 64)+ CHAR ((ABS(Checksum(NewID()) % 15) + 1)+ 64),
-		'Страна'+ ' ' + CHAR ((ABS(Checksum(NewID()) % 15) + 1) + 64) + CHAR ((ABS(Checksum(NewID()) % 15) + 1) + 64)+ CHAR ((ABS(Checksum(NewID()) % 15) + 1)+ 64),
+		'РђСЌСЂРѕРїРѕСЂС‚'+ ' ' + CHAR ((ABS(Checksum(NewID()) % 15) + 1) + 64) + CHAR ((ABS(Checksum(NewID()) % 15) + 1) + 64)+ CHAR ((ABS(Checksum(NewID()) % 15) + 1)+ 64),
+		'Р“РѕСЂРѕРґ'+ ' ' + CHAR ((ABS(Checksum(NewID()) % 15) + 1) + 64) + CHAR ((ABS(Checksum(NewID()) % 15) + 1) + 64)+ CHAR ((ABS(Checksum(NewID()) % 15) + 1)+ 64),
+		'Р РµРіРёРѕРЅ'+ ' ' + CHAR ((ABS(Checksum(NewID()) % 15) + 1) + 64) + CHAR ((ABS(Checksum(NewID()) % 15) + 1) + 64)+ CHAR ((ABS(Checksum(NewID()) % 15) + 1)+ 64),
+		'РЎС‚СЂР°РЅР°'+ ' ' + CHAR ((ABS(Checksum(NewID()) % 15) + 1) + 64) + CHAR ((ABS(Checksum(NewID()) % 15) + 1) + 64)+ CHAR ((ABS(Checksum(NewID()) % 15) + 1)+ 64),
 		(select top 1 Continent FROM #t1 order by NewID())
 	)
 	
@@ -129,7 +129,7 @@ end
 drop table #t1
 
 declare 
-@b int = 10000, -- сколько строк добавить
+@b int = 10000, -- СЃРєРѕР»СЊРєРѕ СЃС‚СЂРѕРє РґРѕР±Р°РІРёС‚СЊ
 @DepartureDateTime datetime,
 @ArrivalDateTime datetime,
 @DepartureAirportId int,
@@ -143,7 +143,7 @@ while @b > 0
 begin
 	
 	set @DepartureDateTime  = (select CAST(DateAdd(d, ROUND(DateDiff(D, '2010-01-01', '2013-01-01') * RAND(), 0), '2013-01-01') AS DATETIME) + CAST(dateadd(millisecond, cast(86400000 * RAND() as int), convert(time, '00:00')) AS DATETIME))
-	set @ArrivalDateTime = DATEADD(hh,ABS(Checksum(NewID()) % 10), @DepartureDateTime) -- время прилёта должно быть больше времени вылета в пределах 10 часов	
+	set @ArrivalDateTime = DATEADD(hh,ABS(Checksum(NewID()) % 10), @DepartureDateTime) -- РІСЂРµРјСЏ РїСЂРёР»С‘С‚Р° РґРѕР»Р¶РЅРѕ Р±С‹С‚СЊ Р±РѕР»СЊС€Рµ РІСЂРµРјРµРЅРё РІС‹Р»РµС‚Р° РІ РїСЂРµРґРµР»Р°С… 10 С‡Р°СЃРѕРІ	
 	set @DepartureAirportId  = (select top 1 AirportId FROM a.Geography order by NewID())
 	set @DestinationAirportId = (
 		select 
@@ -151,9 +151,9 @@ begin
 		from a.Geography 
 		where AirportId !=@DepartureAirportId 
 		order by NewID()
-	) -- аэропорт прибытия не может совпадать с аэропортом отправления (аварийные посадки в счёт не берём). 
+	) -- Р°СЌСЂРѕРїРѕСЂС‚ РїСЂРёР±С‹С‚РёСЏ РЅРµ РјРѕР¶РµС‚ СЃРѕРІРїР°РґР°С‚СЊ СЃ Р°СЌСЂРѕРїРѕСЂС‚РѕРј РѕС‚РїСЂР°РІР»РµРЅРёСЏ (Р°РІР°СЂРёР№РЅС‹Рµ РїРѕСЃР°РґРєРё РІ СЃС‡С‘С‚ РЅРµ Р±РµСЂС‘Рј). 
 	set @PlaneId = (select top 1 PlaneId FROM a.Planes order by NewID())
-	set @Passengers = (select Seats - ABS(Checksum(NewID()) % 10) from a.Planes where PlaneId = @PlaneId) -- пассажиров не может быть больше сидений в самолёте. 
+	set @Passengers = (select Seats - ABS(Checksum(NewID()) % 10) from a.Planes where PlaneId = @PlaneId) -- РїР°СЃСЃР°Р¶РёСЂРѕРІ РЅРµ РјРѕР¶РµС‚ Р±С‹С‚СЊ Р±РѕР»СЊС€Рµ СЃРёРґРµРЅРёР№ РІ СЃР°РјРѕР»С‘С‚Рµ. 
 	insert into a.Flights
 	(
 		DepartureDateTime,
